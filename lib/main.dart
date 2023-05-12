@@ -1,10 +1,10 @@
 // @dart=2.9
 
 import 'package:flutter/material.dart';
-import 'package:news_app/article_webview.dart';
-import 'package:news_app/detail_page.dart';
-import 'package:news_app/styles.dart';
-import 'list_page.dart';
+import 'package:news_app/ui/article_detail_page.dart';
+import 'package:news_app/ui/article_web_view.dart';
+import 'package:news_app/common/styles.dart';
+import 'ui/home_page.dart';
 
 
 void main() {
@@ -38,10 +38,15 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedIconTheme: IconThemeData(color: secondaryColor),
+          unselectedIconTheme: const IconThemeData(color: Color.fromRGBO(158, 158, 158, 1)),
+          selectedItemColor: const Color.fromRGBO(158, 158, 158, 1),
+        ),
       ),
-      initialRoute: NewsListPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
-        NewsListPage.routeName: (context) => const NewsListPage(),
+        HomePage.routeName: (context) => const HomePage(),
         ArticleDetailPage.routeName: (context) =>
             ArticleDetailPage(article: ModalRoute.of(context).settings.arguments),
         ArticleWebView.routeName: (context) => ArticleWebView(

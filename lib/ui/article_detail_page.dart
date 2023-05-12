@@ -1,6 +1,6 @@
-import 'package:news_app/article.dart';
+import 'package:news_app/data/model/article.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/article_webview.dart';
+import 'package:news_app/ui/article_web_view.dart';
 
 
 class ArticleDetailPage extends StatelessWidget {
