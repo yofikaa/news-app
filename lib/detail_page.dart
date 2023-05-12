@@ -1,14 +1,13 @@
 import 'package:news_app/article.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/styles.dart';
+import 'package:news_app/article_webview.dart';
 
 
 class ArticleDetailPage extends StatelessWidget {
   static const routeName = '/article_detail';
   final Article article;
 
-  const ArticleDetailPage({required this.article});
+  const ArticleDetailPage({Key? key, required this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,33 +20,35 @@ class ArticleDetailPage extends StatelessWidget {
           children: [
             Image.network(article.urlToImage),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(article.description),
-                  Divider(color: Colors.grey),
+                  const Divider(color: Colors.grey),
                   Text(
                     article.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
                     ),
                   ),
-                  Divider(color: Colors.grey),
+                  const Divider(color: Colors.grey),
                   Text('Date: ${article.publishedAt}'),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text('Author: ${article.author}'),
-                  Divider(color: Colors.grey),
+                  const Divider(color: Colors.grey),
                   Text(
                     article.content,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton(
-                    child: Text('Read more'),
-                    onPressed: () {},
+                    child: const Text('Read more'),
+                    onPressed: () {
+                      Navigator.pushNamed(context, ArticleWebView.routeName, arguments: article.url);
+                    },
                   ),
                 ],
               ),
