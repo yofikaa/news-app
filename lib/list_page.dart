@@ -1,18 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/detail_page.dart';
 import 'package:news_app/article.dart';
-import 'package:news_app/styles.dart';
 
 
 class NewsListPage extends StatelessWidget {
   static const routeName = '/article_list';
 
+  const NewsListPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News App'),
+        title: const Text('News App'),
       ),
       body: FutureBuilder<String>(
         future: DefaultAssetBundle.of(context).loadString('assets/articles.json'),
