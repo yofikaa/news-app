@@ -13,42 +13,50 @@ class ArticleDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(article.title),
+        title: Text('News App'),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(article.urlToImage),
+            Hero(
+                tag: article.urlToImage!,
+                child: Image.network(article.urlToImage!),
+            ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(article.description),
-                  const Divider(color: Colors.grey),
+                  Text(
+                      article.description,
+                      style: Theme.of(context).textTheme.bodyText2,
+                  ),
                   Text(
                     article.title,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ),
+                    style: Theme.of(context).textTheme.headline6,
                   ),
-                  const Divider(color: Colors.grey),
-                  Text('Date: ${article.publishedAt}'),
-                  const SizedBox(height: 10),
-                  Text('Author: ${article.author}'),
-                  const Divider(color: Colors.grey),
+                  Divider(color: Colors.grey),
                   Text(
-                    article.content,
-                    style: const TextStyle(fontSize: 16),
+                    'Date: ${article.publishedAt}',
+                    style: Theme.of(context).textTheme.caption,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
+                  Text(
+                    'Author : ${article.author}',
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                  Divider(color: Colors.grey),
+                  Text(
+                    article.content ?? "",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  SizedBox(height: 10),
                   ElevatedButton(
-                    child: const Text('Read more'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, ArticleWebView.routeName, arguments: article.url);
-                    },
+                    child : Text('Read More'),
+                      onPressed: () {
+                      Navigator.pushNamed(context, ArticleWebView.routeName,
+                      arguments: article.url);
+                      },
                   ),
                 ],
               ),

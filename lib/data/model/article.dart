@@ -1,5 +1,29 @@
 import 'dart:convert';
 
+class ArticlesResult {
+  String status;
+  int totalResults;
+  List<Article> articles;
+
+  ArticlesResult({
+    required this.status,
+    required this.totalResults,
+    required this.articles,
+  });
+
+  factory ArticlesResult.fromJson(Map<String, dynamic> json) => ArticlesResult(
+    status: json["status"],
+    totalResults: json["totalResults"],
+    articles: List<Article>.from((json["articles"] as List)
+        .map((x) => Article.fromJson(x))
+        .where((article) =>
+          article.author != null &&
+          article.urlToImage != null &&
+          article.publishedAt != null &&
+          article.content != null)),
+  );
+
+}
 
 class Article {
   late String author;
