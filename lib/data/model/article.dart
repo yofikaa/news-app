@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-class ArticlesResult {
+class ArticleResult {
   String status;
   int totalResults;
   List<Article> articles;
 
-  ArticlesResult({
+  ArticleResult({
     required this.status,
     required this.totalResults,
     required this.articles,
   });
 
-  factory ArticlesResult.fromJson(Map<String, dynamic> json) => ArticlesResult(
+  factory ArticleResult.fromJson(Map<String, dynamic> json) => ArticleResult(
     status: json["status"],
     totalResults: json["totalResults"],
     articles: List<Article>.from((json["articles"] as List)
